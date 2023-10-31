@@ -5,6 +5,14 @@ mix of yaml, json and all subvariants mixed together in a mess of a format full 
 
 Just an vscode extension quickly thrown together so scenario creators can have an easier life.
 
+## Install
+- download [ecf-support-0.0.1.vsix](ecf-support-0.0.1.vsix)
+- in VSCode -> CTRL+SHIFT+P -> "Developer: Install Extension from Location" OR
+use `code --install-extension ecf-support-0.0.1.vsix`
+
+If opening an ecf file didn't automatically select the extension already, do that yourself:
+CTRL+K M -> Select ecf language - vscode should remember that setting in the future.
+
 ## Features
 
 Basically just a simple syntax highlighting. Has even various bugs.
