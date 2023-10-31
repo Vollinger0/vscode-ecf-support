@@ -1,0 +1,36 @@
+{
+  "name": "ecf-support",
+  "displayName": "ecf-support",
+  "description": "ecf-support provides a grammar for ecf files from empyrion galactic survival",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "ecf",
+        "aliases": [
+          "ecf"
+        ],
+        "extensions": [
+          "ecf"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ecf",
+        "scopeName": "source.ecf",
+        "path": "./syntaxes/ecf.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "vscode-tmgrammar-test": "^0.1.2"
+  } 
+}

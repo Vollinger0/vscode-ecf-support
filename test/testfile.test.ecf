@@ -1,0 +1,213 @@
+# SYNTAX TEST "source.ecf" "testfile.test"
+
+># some comment
+#^ source.ecf comment.line.number-sign.ecf punctuation.definition.comment.ecf
+# ^^^^^^^^^^^^^ source.ecf comment.line.number-sign.ecf
+># another comment
+#^ source.ecf comment.line.number-sign.ecf punctuation.definition.comment.ecf
+# ^^^^^^^^^^^^^^^^ source.ecf comment.line.number-sign.ecf
+>
+>/* 
+#^^ source.ecf comment.block.ecf punctuation.definition.comment.begin.ecf
+#  ^^ source.ecf comment.block.ecf
+> some block comment 
+#^^^^^^^^^^^^^^^^^^^^^ source.ecf comment.block.ecf
+>*/
+#^^ source.ecf comment.block.ecf punctuation.definition.comment.end.ecf
+>
+>Version: 1
+#^^^^^^^^ source.ecf version.source.ecf keyword.version.ecf
+#        ^ source.ecf version.source.ecf
+#         ^ source.ecf version.source.ecf constant.numeric.ecf
+>
+>{ Item id: 123
+#^^ source.ecf entity.block
+#  ^^^^ source.ecf entity.block entity.name.type.ecf
+#      ^ source.ecf entity.block
+#       ^^ source.ecf entity.block entity.name.tag.ecf
+#         ^^ source.ecf entity.block punctuation.ecf
+#           ^^^ source.ecf entity.block constant.numeric.ecf
+>  field1: value1
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>  field2: value2
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>  # in-block comment
+#^^ source.ecf entity.block punctuation.whitespace.comment.leading.ecf
+#  ^ source.ecf entity.block comment.line.number-sign.ecf punctuation.definition.comment.ecf
+#   ^^^^^^^^^^^^^^^^^ source.ecf entity.block comment.line.number-sign.ecf
+>
+>  /*
+#^^ source.ecf entity.block comment.block.ecf
+#  ^^ source.ecf entity.block comment.block.ecf punctuation.definition.comment.begin.ecf
+>   in-block block comment
+#^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf entity.block comment.block.ecf
+>  */
+#^^ source.ecf entity.block comment.block.ecf
+#  ^^ source.ecf entity.block comment.block.ecf punctuation.definition.comment.end.ecf
+>}
+#^ source.ecf entity.block
+>
+>{ Item Id: 232
+#^^ source.ecf entity.block
+#  ^^^^ source.ecf entity.block entity.name.type.ecf
+#      ^ source.ecf entity.block
+#       ^^ source.ecf entity.block entity.name.tag.ecf
+#         ^^ source.ecf entity.block punctuation.ecf
+#           ^^^ source.ecf entity.block constant.numeric.ecf
+>  field1: value1
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>  field2: value2
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>}
+#^ source.ecf entity.block
+>
+>{ Item Id: 233, Name: blockname234
+#^^ source.ecf entity.block
+#  ^^^^ source.ecf entity.block entity.name.type.ecf
+#      ^ source.ecf entity.block
+#       ^^ source.ecf entity.block entity.name.tag.ecf
+#         ^^ source.ecf entity.block punctuation.ecf
+#           ^^^ source.ecf entity.block constant.numeric.ecf
+#              ^^ source.ecf entity.block
+#                ^^^^ source.ecf entity.block keyword.blockname.ecf
+#                    ^^ source.ecf entity.block punctuation.ecf
+#                      ^^^^^^^^^^^^ source.ecf entity.block constant.character.ecf
+>  field1: value1
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>  field2: value2
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>}
+#^ source.ecf entity.block
+>
+>{ +Item Id: 234, Name: blockname234
+#^^ source.ecf entity.block
+#  ^ source.ecf entity.block punctuation.blocktype.prefix.ecf
+#   ^^^^ source.ecf entity.block entity.name.type.ecf
+#       ^ source.ecf entity.block
+#        ^^ source.ecf entity.block entity.name.tag.ecf
+#          ^^ source.ecf entity.block punctuation.ecf
+#            ^^^ source.ecf entity.block constant.numeric.ecf
+#               ^^ source.ecf entity.block
+#                 ^^^^ source.ecf entity.block keyword.blockname.ecf
+#                     ^^ source.ecf entity.block punctuation.ecf
+#                       ^^^^^^^^^^^^ source.ecf entity.block constant.character.ecf
+>  field1: value1
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>  field2: value2
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>}
+#^ source.ecf entity.block
+>
+>{ +Item Id: 345, Name: blockname345, what: "the fuck is that"
+#^^ source.ecf entity.block
+#  ^ source.ecf entity.block punctuation.blocktype.prefix.ecf
+#   ^^^^ source.ecf entity.block entity.name.type.ecf
+#       ^ source.ecf entity.block
+#        ^^ source.ecf entity.block entity.name.tag.ecf
+#          ^^ source.ecf entity.block punctuation.ecf
+#            ^^^ source.ecf entity.block constant.numeric.ecf
+#               ^^ source.ecf entity.block
+#                 ^^^^ source.ecf entity.block keyword.blockname.ecf
+#                     ^^ source.ecf entity.block punctuation.ecf
+#                       ^^^^^^^^^^^^ source.ecf entity.block constant.character.ecf
+#                                   ^ source.ecf entity.block
+#                                    ^ source.ecf entity.block property.ecf
+#                                     ^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#                                         ^^ source.ecf entity.block property.ecf
+#                                           ^^^^^^^^^^^^^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>  field1: value1, extension1: what, extension2: the
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+#                ^^^^^^^^^^^^^^^^^^^^ source.ecf entity.block property.ecf
+#                                    ^^^^^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#                                              ^^ source.ecf entity.block property.ecf
+#                                                ^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>  field2: value2, extension3: fuck
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+#                ^^ source.ecf entity.block property.ecf
+#                  ^^^^^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#                            ^^ source.ecf entity.block property.ecf
+#                              ^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+> 
+>  { Child childtype1
+#^^^^ source.ecf entity.block entity.childblock
+#    ^^^^^ source.ecf entity.block entity.childblock entity.name.type.ecf
+#         ^ source.ecf entity.block entity.childblock
+#          ^^^^^^^^^^ source.ecf entity.block entity.childblock constant.character.ecf
+>    subfield2: subvalue2
+#^^^^ source.ecf entity.block entity.childblock property.ecf
+#    ^^^^^^^^^ source.ecf entity.block entity.childblock property.ecf keyword.other.ecf
+#             ^^ source.ecf entity.block entity.childblock property.ecf
+#               ^^^^^^^^^ source.ecf entity.block entity.childblock property.ecf string.unquoted.ecf
+>    subfield3: subvalue3
+#^^^^ source.ecf entity.block entity.childblock property.ecf
+#    ^^^^^^^^^ source.ecf entity.block entity.childblock property.ecf keyword.other.ecf
+#             ^^ source.ecf entity.block entity.childblock property.ecf
+#               ^^^^^^^^^ source.ecf entity.block entity.childblock property.ecf string.unquoted.ecf
+>  }
+#^^ source.ecf entity.block entity.childblock
+#  ^ source.ecf entity.block entity.childblock
+>  
+>  field3: value3
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>  
+>  { Child childtype2
+#^^^^ source.ecf entity.block entity.childblock
+#    ^^^^^ source.ecf entity.block entity.childblock entity.name.type.ecf
+#         ^ source.ecf entity.block entity.childblock
+#          ^^^^^^^^^^ source.ecf entity.block entity.childblock constant.character.ecf
+>    subfield2: subvalue2
+#^^^^ source.ecf entity.block entity.childblock property.ecf
+#    ^^^^^^^^^ source.ecf entity.block entity.childblock property.ecf keyword.other.ecf
+#             ^^ source.ecf entity.block entity.childblock property.ecf
+#               ^^^^^^^^^ source.ecf entity.block entity.childblock property.ecf string.unquoted.ecf
+>    subfield3: subvalue3
+#^^^^ source.ecf entity.block entity.childblock property.ecf
+#    ^^^^^^^^^ source.ecf entity.block entity.childblock property.ecf keyword.other.ecf
+#             ^^ source.ecf entity.block entity.childblock property.ecf
+#               ^^^^^^^^^ source.ecf entity.block entity.childblock property.ecf string.unquoted.ecf
+>  }
+#^^ source.ecf entity.block entity.childblock
+#  ^ source.ecf entity.block entity.childblock
+>  
+>  field4: value4
+#^^ source.ecf entity.block property.ecf
+#  ^^^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#        ^^ source.ecf entity.block property.ecf
+#          ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>    
+>}
+#^ source.ecf entity.block
+>

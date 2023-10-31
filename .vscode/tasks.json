@@ -1,0 +1,33 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run tests",
+			"type": "shell",
+			"command": "vscode-tmgrammar-test -c -g syntaxes/ecf.tmLanguage.json 'test/**/*.test.ecf'",
+			"group": "test",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": {
+				"owner": "vscode-tmgrammar-test",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"pattern": [
+					{
+						"regexp": "^(ERROR)\\s([^:]+):(\\d+):(\\d+):(\\d+)\\s(.*)$",
+						"severity": 1,
+						"file": 2,
+						"line": 3,
+						"column": 4,
+						"endColumn": 5,
+						"message": 6
+					}
+				]
+			}
+		}
+	]
+}

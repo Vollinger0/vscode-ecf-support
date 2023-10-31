@@ -1,0 +1,137 @@
+{
+  "version": "v1",
+  "name": "ecf",
+  "scopeName": "source.ecf",
+	"patterns": [
+	  {
+		  "include": "#comment"
+	  },
+    {
+      "include": "#blockcomment"
+    },
+	  {
+		  "include": "#block"
+	  },
+    {
+      "include": "#versiondefinition"
+    },
+    {
+      "include": "#properties"
+    }
+	],
+  "repository": {
+    "versiondefinition": {
+      "comment": "optional version definition found in some files",
+      "name": "version.source.ecf",
+      "begin": "(Version:)\\ (\\S+)",
+      "captures": {
+        "1": { "name": "keyword.version.ecf" },
+        "2": { "name": "constant.numeric.ecf" }
+      },
+      "end": "\\n"
+    },
+		"comment": {
+			"begin": "(?:(^[ \\t]*)|[ \\t]+)(?=#\\p{Print}*$)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.comment.leading.ecf"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"name": "comment.line.number-sign.ecf",
+					"begin": "(\\s*)(#)",
+					"beginCaptures": {
+						"2": {
+							"name": "punctuation.definition.comment.ecf"
+						}
+					},
+					"end": "\\n"
+				}
+			]
+		},
+		"blockcomment": {
+			"patterns": [
+				{
+					"begin": "\\s*+(\\/\\*)",
+					"end": "\\*\\/",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.definition.comment.begin.ecf"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.end.ecf"
+						}
+					},
+					"name": "comment.block.ecf"
+				}
+			]
+		},
+    "block": {
+      "begin": "(\\s*){(\\s*)(\\+)?(\\S+)\\ ([iI]d)(:\\ ?)(\\d+)(,\\ ?([nN]ame)(:\\ ?)(\\w+))?",
+      "beginCaptures": {
+        "3": { "name": "punctuation.blocktype.prefix.ecf", "comment": "optional +" },
+        "4": { "name": "entity.name.type.ecf", "comment": "keyword block type" },
+        "5": { "name": "entity.name.tag.ecf", "comment": "keyword id" },
+        "6": { "name": "punctuation.ecf", "comment": "colon" },
+        "7": { "name": "constant.numeric.ecf", "comment": "id value" },
+        "9": { "name": "keyword.blockname.ecf", "comment": "keyword block name" },
+        "10": { "name": "punctuation.ecf", "comment": "colon" },
+        "11": { "name": "constant.character.ecf", "comment": "name value" }
+      },
+      "end": "}",
+      "name": "entity.block",
+      "patterns": [
+        {
+          "include": "#properties" 
+        },
+        {
+          "include": "#childblock"
+        },
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#blockcomment"
+        }
+      ]
+    },
+    "childblock": {
+      "begin": "^\\s*{\\s*\\+? (Child) (\\S+)",
+      "beginCaptures": {
+        "1": { "name" : "entity.name.type.ecf"},
+        "2": { "name" : "constant.character.ecf"}
+      },
+      "end": "}",
+      "name": "entity.childblock",
+      "patterns": [
+        {
+          "include": "#properties"
+        },
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#blockcomment"
+        }
+      ]
+    },
+    "properties": {
+      "patterns": [
+        {
+          "name": "property.ecf",
+          "match": "\\s+?(\\S+?):\\s+?(.+?)(,\\s+?(\\S+?):\\s+?(.+?))*?$",
+          "captures": {
+            "1": { "name": "keyword.other.ecf" },
+            "2": { "name": "string.unquoted.ecf" },
+            "4": { "name": "keyword.other.ecf" },
+            "5": { "name": "string.unquoted.ecf" }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+# some comment
+# another comment
+
+/* 
+ some block comment 
+*/
+
+Version: 1
+
+{ Item id: 123
+  field1: value1
+  field2: value2
+  # in-block comment
+
+  /*
+   in-block block comment
+  */
+}
+
+{ Item Id: 232
+  field1: value1
+  field2: value2
+}
+
+{ Item Id: 233, Name: blockname234
+  field1: value1
+  field2: value2
+}
+
+{ +Item Id: 234, Name: blockname234
+  field1: value1
+  field2: value2
+}
+
+{ +Item Id: 345, Name: blockname345, what: "the fuck is that"
+  field1: value1, extension1: what, extension2: the
+  field2: value2, extension3: fuck
+ 
+  { Child childtype1
+    subfield2: subvalue2
+    subfield3: subvalue3
+  }
+  
+  field3: value3
+  
+  { Child childtype2
+    subfield2: subvalue2
+    subfield3: subvalue3
+  }
+  
+  field4: value4
+    
+}

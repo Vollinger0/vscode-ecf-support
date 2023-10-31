@@ -1,0 +1,33 @@
+# SYNTAX TEST "source.ecf" "sample testcase"
+
+>{ Block Id: 123 
+#  ^^^^^ source.ecf entity.block entity.name.type.ecf
+#        ^^ source.ecf entity.block entity.name.tag.ecf
+#            ^^^ source.ecf entity.block constant.numeric.ecf
+>}
+#^ source.ecf
+
+
+>{ Block Id: 123, Name: FooBar
+#  ^^^^^ source.ecf entity.block entity.name.type.ecf
+#        ^^ source.ecf entity.block entity.name.tag.ecf
+#            ^^^ source.ecf entity.block constant.numeric.ecf
+#                 ^^^^ source.ecf entity.block keyword.blockname.ecf
+#                       ^^^^^^ source.ecf entity.block constant.character.ecf
+>}
+#^ source.ecf
+
+> Key1: Value1
+# ^^^^ source.ecf property.ecf keyword.other.ecf
+#       ^^^^^^ source.ecf property.ecf string.unquoted.ecf
+
+>{ Block Id: 123, Name: FooBar, Key1: Value1
+#  ^^^^^ source.ecf entity.block entity.name.type.ecf
+#        ^^ source.ecf entity.block entity.name.tag.ecf
+#            ^^^ source.ecf entity.block constant.numeric.ecf
+#                 ^^^^ source.ecf entity.block keyword.blockname.ecf
+#                       ^^^^^^ source.ecf entity.block constant.character.ecf
+#                               ^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#                                     ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>}
+#^ source.ecf
