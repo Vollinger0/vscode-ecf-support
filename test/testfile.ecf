@@ -23,8 +23,8 @@ Version: 1
 }
 
 { Item Id: 233, Name: blockname234
-  field1: value1
-  field2: value2
+  field1: value1   # line commant after prop
+  field2: value2, ext2: extval2  # line comment after ext. prop
 }
 
 { +Item Id: 234, Name: blockname234

@@ -1,7 +1,7 @@
 # ecf-support README
 
 Support for the Empyrion Galactic Survival configuration file format "ecf" which is basically the worst
-mix of yaml, json and all subvariants mixed together in a mess of a format full of inconsistencies :)
+mix of yaml, json and all subvariants, thrown together in a mess of a format full of inconsistencies :)
 
 Just an vscode extension quickly thrown together so scenario creators can have an easier life.
 
@@ -15,7 +15,7 @@ CTRL+K M -> Select ecf language - vscode should remember that setting in the fut
 
 ## Features
 
-Basically just a simple syntax highlighting. Has even various bugs.
+Basically just a simple syntax highlighting extension for ecf files. With a few intended bugs so you feel at home.
 
 ## Requirements
 
@@ -27,8 +27,7 @@ None yet.
 
 ## Known Issues
 
-- extended key-value pairs don't work properly, only the first and last are highlighted
-- blocktypes with empty space ending with "Name" are highlighted wrong. who made up that.
+- blocktypes with empty space ending with "Name" are highlighted wrong. who made that up.
 - probably a lot more
 
 ## TODOs
@@ -38,10 +37,17 @@ None yet.
 - [ ] format support for dialogue function blocks
 - [ ] tooltip for the dialogue localization or similar
 
+## Packaging
+
+* just create the vsix file with `vsce package` for now. I may publish this as an official extension some other day.
+
 ## Release Notes
 
-### 1.0.0
-
+### 0.0.1
 Initial release with the most basic featureset ever. But still better than none, right?
+### 0.0.2
+- [x] extended properties don't work properly, only the first and last are highlighted
+- [x] wrong highlighting on line comments after properties and extended properties
+- [x] proper childblock recognition
 
 #### by vollinger 2023

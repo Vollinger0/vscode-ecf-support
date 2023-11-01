@@ -2,6 +2,7 @@
   "name": "ecf-support",
   "displayName": "ecf-support",
   "description": "ecf-support provides a grammar for ecf files from empyrion galactic survival",
+  "author": {"name": "Vollinger"},
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.83.0"
@@ -32,5 +33,5 @@
   },
   "devDependencies": {
     "vscode-tmgrammar-test": "^0.1.2"
-  } 
+  }
 }

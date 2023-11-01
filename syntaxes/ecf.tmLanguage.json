@@ -71,6 +71,7 @@
 			]
 		},
     "block": {
+      "name": "entity.block",
       "begin": "(\\s*){(\\s*)(\\+)?(\\S+)\\ ([iI]d)(:\\ ?)(\\d+)(,\\ ?([nN]ame)(:\\ ?)(\\w+))?",
       "beginCaptures": {
         "3": { "name": "punctuation.blocktype.prefix.ecf", "comment": "optional +" },
@@ -83,7 +84,6 @@
         "11": { "name": "constant.character.ecf", "comment": "name value" }
       },
       "end": "}",
-      "name": "entity.block",
       "patterns": [
         {
           "include": "#properties" 
@@ -100,13 +100,14 @@
       ]
     },
     "childblock": {
-      "begin": "^\\s*{\\s*\\+? (Child) (\\S+)",
+      "name": "entity.childblock",
+      "begin": "{\\s*\\+?\\s*(Child)\\s+?(\\w+)",
       "beginCaptures": {
+        "0": { "name" : "entity.childblock.definition"},
         "1": { "name" : "entity.name.type.ecf"},
         "2": { "name" : "constant.character.ecf"}
       },
       "end": "}",
-      "name": "entity.childblock",
       "patterns": [
         {
           "include": "#properties"
@@ -122,13 +123,37 @@
     "properties": {
       "patterns": [
         {
+          "include": "#property"
+        },
+        {
+          "include": "#comment"
+        }
+      ]
+    },
+    "property" : {
+      "patterns": [
+        {
           "name": "property.ecf",
-          "match": "\\s+?(\\S+?):\\s+?(.+?)(,\\s+?(\\S+?):\\s+?(.+?))*?$",
+          "match": "\\b(\\w+):\\s*([\\w\\./]+)",
           "captures": {
-            "1": { "name": "keyword.other.ecf" },
-            "2": { "name": "string.unquoted.ecf" },
-            "4": { "name": "keyword.other.ecf" },
-            "5": { "name": "string.unquoted.ecf" }
+            "1": { "name": "keyword.other.ecf", "comment": "key" },
+            "2": { "name": "string.unquoted.ecf", "comment": "value" }
+          }
+        },
+        {
+          "name": "property.quoted.ecf",
+          "match": "\\b(\\w+):\\s*(\"[\\w,]+\")",
+          "captures": {
+            "1": { "name": "keyword.other.ecf", "comment": "key" },
+            "2": { "name": "string.quoted.ecf", "comment": "value" }
+          }
+        },
+        {
+          "name": "property.model.ecf",
+          "match": "\\b(\\w+):\\s*([\\w@/]+)",
+          "captures": {
+            "1": { "name": "keyword.other.ecf", "comment": "key" },
+            "2": { "name": "string.other.ecf", "comment": "value" }
           }
         }
       ]
