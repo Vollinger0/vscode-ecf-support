@@ -1,0 +1,97 @@
+# SYNTAX TEST "source.ecf" "all testcases that don't fit somewhere else"
+
+>{ Block Id: 123 
+#  ^^^^^ source.ecf entity.block entity.name.type.ecf
+#        ^^ source.ecf entity.block entity.name.tag.ecf
+#            ^^^ source.ecf entity.block constant.numeric.ecf
+>}
+#^ source.ecf
+
+
+>{ Block Id: 123, Name: FooBar
+#  ^^^^^ source.ecf entity.block entity.name.type.ecf
+#        ^^ source.ecf entity.block entity.name.tag.ecf
+#            ^^^ source.ecf entity.block constant.numeric.ecf
+#                 ^^^^ source.ecf entity.block keyword.blockname.ecf
+#                       ^^^^^^ source.ecf entity.block constant.character.ecf
+>}
+#^ source.ecf
+
+
+> Key1: Value1
+# ^^^^ source.ecf property.ecf keyword.other.ecf
+#       ^^^^^^ source.ecf property.ecf string.unquoted.ecf
+
+
+> field1: value1   # line commant after prop
+# ^^^^^^ source.ecf property.ecf keyword.other.ecf
+#         ^^^^^^ source.ecf property.ecf string.unquoted.ecf
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf comment.line.number-sign.ecf
+
+
+> field2: value2, ext2: extval2  # line comment after ext. prop
+# ^^^^^^ source.ecf property.ecf keyword.other.ecf
+#         ^^^^^^ source.ecf property.ecf string.unquoted.ecf
+#                 ^^^^ source.ecf property.ecf keyword.other.ecf
+#                       ^^^^^^^ source.ecf property.ecf string.unquoted.ecf
+#                                ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf comment.line.number-sign.ecf
+
+
+> field2: value2, ext2: extval2, ext3: extval3  # line comment after ext. prop
+# ^^^^^^ source.ecf property.ecf keyword.other.ecf
+#         ^^^^^^ source.ecf property.ecf string.unquoted.ecf
+#                 ^^^^ source.ecf property.ecf keyword.other.ecf
+#                       ^^^^^^^ source.ecf property.ecf string.unquoted.ecf
+#                                ^^^^ source.ecf property.ecf keyword.other.ecf
+#                                      ^^^^^^^ source.ecf property.ecf string.unquoted.ecf
+#                                               ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf comment.line.number-sign.ecf
+
+
+>{ Block Id: 123, Name: FooBar, Key1: Value1
+#  ^^^^^ source.ecf entity.block entity.name.type.ecf
+#        ^^ source.ecf entity.block entity.name.tag.ecf
+#            ^^^ source.ecf entity.block constant.numeric.ecf
+#                 ^^^^ source.ecf entity.block keyword.blockname.ecf
+#                       ^^^^^^ source.ecf entity.block constant.character.ecf
+#                               ^^^^ source.ecf entity.block property.ecf keyword.other.ecf
+#                                     ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+>}
+#^ source.ecf
+
+
+> Collide: "bullet,rocket,melee,sight"
+# ^^^^^^^ source.ecf property.quoted.ecf keyword.other.ecf
+#          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf property.quoted.ecf string.quoted.ecf
+
+
+> Model: @models2/Environment/Plants/FractalFlora/InsanityPepperNoFruitPrefab
+# ^^^^^ source.ecf property.model.ecf keyword.other.ecf
+#        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf property.model.ecf string.other.ecf
+
+{ Parent Id: 123
+>{ Child FooBar
+#  ^^^^^ source.ecf entity.block entity.childblock entity.name.type.ecf
+#        ^^^^^^ source.ecf entity.block entity.childblock constant.character.ecf
+}}
+
+{ Parent Id: 123, Name: Bla
+>{ Child DropOnDestroy_1
+#  ^^^^^ source.ecf entity.block entity.childblock entity.name.type.ecf
+#        ^^^^^^^^^^^^^^^ source.ecf entity.block entity.childblock constant.character.ecf
+}}
+
+
+>{ +Dialogue Name: Eden_PolarisRig_Start
+#   ^^^^^^^^ source.ecf entity.block entity.name.type.ecf
+#            ^^^^ source.ecf entity.block keyword.blockname.ecf
+#                  ^^^^^^^^^^^^^^^^^^^^^ source.ecf entity.block constant.character.ecf
+
+> OptionIf_1: "IsPdaChapterActive('eden_pda_CCsYWuG')"
+# ^^^^^^^^^^ source.ecf entity.block property.function.ecf keyword.other.ecf
+#             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf entity.block property.function.ecf string.other.ecf
+
+> OptionExecute_1: "Eden_PolarisMission1Progress = 1"
+# ^^^^^^^^^^^^^^^ source.ecf entity.block property.function.ecf keyword.other.ecf
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf entity.block property.function.ecf string.other.ecf
+
+}

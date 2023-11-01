@@ -70,21 +70,39 @@
 				}
 			]
 		},
+    "block-id": {
+      "name": "entity.id.tag.ecf",
+      "match": "([iI]d)(:\\s*)(\\d+)",
+      "captures": {
+        "1": { "name": "entity.name.tag.ecf", "comment": "keyword id" },
+        "2": { "name": "punctuation.ecf", "comment": "colon" },
+        "3": { "name": "constant.numeric.ecf", "comment": "id value" }
+      }
+    },
+    "block-name": {
+      "name": "entity.name.tag.ecf",
+      "match": "([nN]ame)(:\\s*)(\\w+)",
+      "captures": {
+        "1": { "name": "keyword.blockname.ecf", "comment": "keyword block name" },
+        "2": { "name": "punctuation.ecf", "comment": "colon" },
+        "3": { "name": "constant.character.ecf", "comment": "name value" }
+      }
+    },
     "block": {
       "name": "entity.block",
-      "begin": "(\\s*){(\\s*)(\\+)?(\\S+)\\ ([iI]d)(:\\ ?)(\\d+)(,\\ ?([nN]ame)(:\\ ?)(\\w+))?",
+      "begin": "{\\s*(\\+)?(\\S+)",
       "beginCaptures": {
-        "3": { "name": "punctuation.blocktype.prefix.ecf", "comment": "optional +" },
-        "4": { "name": "entity.name.type.ecf", "comment": "keyword block type" },
-        "5": { "name": "entity.name.tag.ecf", "comment": "keyword id" },
-        "6": { "name": "punctuation.ecf", "comment": "colon" },
-        "7": { "name": "constant.numeric.ecf", "comment": "id value" },
-        "9": { "name": "keyword.blockname.ecf", "comment": "keyword block name" },
-        "10": { "name": "punctuation.ecf", "comment": "colon" },
-        "11": { "name": "constant.character.ecf", "comment": "name value" }
+        "1": { "name": "punctuation.blocktype.prefix.ecf", "comment": "optional +" },
+        "2": { "name": "entity.name.type.ecf", "comment": "keyword block type" }
       },
       "end": "}",
       "patterns": [
+        {
+          "include": "#block-id" 
+        },
+        {
+          "include": "#block-name" 
+        },
         {
           "include": "#properties" 
         },
@@ -151,6 +169,14 @@
         {
           "name": "property.model.ecf",
           "match": "\\b(\\w+):\\s*([\\w@/]+)",
+          "captures": {
+            "1": { "name": "keyword.other.ecf", "comment": "key" },
+            "2": { "name": "string.other.ecf", "comment": "value" }
+          }
+        },
+        {
+          "name": "property.function.ecf",
+          "match": "\\b(\\w+):\\s*(\".+\")",
           "captures": {
             "1": { "name": "keyword.other.ecf", "comment": "key" },
             "2": { "name": "string.other.ecf", "comment": "value" }

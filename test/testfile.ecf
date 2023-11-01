@@ -51,3 +51,8 @@ Version: 1
   field4: value4
     
 }
+
+{ +Dialogue Name: Eden_PolarisRig_Start
+  OptionIf_1: "IsPdaChapterActive('eden_pda_CCsYWuG')"
+  OptionExecute_1: "Eden_PolarisMission1Progress = 1"
+}
