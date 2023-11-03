@@ -6,7 +6,7 @@ mix of yaml, json and all subvariants, thrown together in a mess of a format ful
 Just an vscode extension quickly thrown together so scenario creators can have an easier life.
 
 ## Install
-- download [the extension file](ecf-support-0.0.2.vsix)
+- download [the extension file](ecf-support-0.0.3.vsix)
 - in VSCode -> CTRL+SHIFT+P -> "Developer: Install Extension from Location" OR
 use `code --install-extension ecf-support-*.vsix`
 
@@ -41,6 +41,11 @@ None yet.
 * create the vsix file with `vsce package` for now. I may publish this as an official extension some other day.
 
 ## Release Notes
+
+### 0.0.3
+- [x] support for // comments
+- [x] added support for a lot of property-variants with comments, quote, unquoted, slashes, brackets... etc.
+- [x] block type names are now scoped as markup.bold, so they appear bold in the default theme
 
 ### 0.0.2
 - [x] extended properties don't work properly, only the first and last are highlighted
