@@ -6,6 +6,9 @@
 	  {
 		  "include": "#comment"
 	  },
+	  {
+		  "include": "#commentslash"
+	  },
     {
       "include": "#blockcomment"
     },
@@ -31,7 +34,7 @@
       "end": "\\n"
     },
 		"comment": {
-			"begin": "(?:(^[ \\t]*)|[ \\t]+)(?=#\\p{Print}*$)",
+			"begin": "(?:([ \\t]*)|[ \\t]+)(?=#.*$)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.whitespace.comment.leading.ecf"
@@ -51,10 +54,31 @@
 				}
 			]
 		},
+		"commentslash": {
+			"begin": "(?:([ \\t]*)|[ \\t]+)(?=//.*$)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.whitespace.comment.leading.ecf"
+				}
+			},
+			"end": "(?!\\G)",
+			"patterns": [
+				{
+					"name": "comment.line.slash-sign.ecf",
+					"begin": "(\\s*|\\t*)(//)",
+					"beginCaptures": {
+						"2": {
+							"name": "punctuation.definition.comment.ecf"
+						}
+					},
+					"end": "\\n"
+				}
+			]
+		},
 		"blockcomment": {
 			"patterns": [
 				{
-					"begin": "\\s*+(\\/\\*)",
+					"begin": "\\s*(\\/\\*)",
 					"end": "\\*\\/",
 					"beginCaptures": {
 						"1": {
@@ -81,11 +105,11 @@
     },
     "block-name": {
       "name": "entity.name.tag.ecf",
-      "match": "([nN]ame)(:\\s*)(\\w+)",
+      "match": "([nN]ame)(:\\s*)(\"?[\\w\\[\\]\\ \\-\\(\\)\\./':]+\"?)(?![^/]*\\*/)",
       "captures": {
         "1": { "name": "keyword.blockname.ecf", "comment": "keyword block name" },
         "2": { "name": "punctuation.ecf", "comment": "colon" },
-        "3": { "name": "constant.character.ecf", "comment": "name value" }
+        "3": { "name": "markup.bold.ecf", "comment": "name value" }
       }
     },
     "block": {
@@ -121,7 +145,7 @@
       "name": "entity.childblock",
       "begin": "{\\s*\\+?\\s*(Child)\\s+?(\\w+)",
       "beginCaptures": {
-        "0": { "name" : "entity.childblock.definition"},
+        "0": { "name" : "entity.childblock.definition.ecf"},
         "1": { "name" : "entity.name.type.ecf"},
         "2": { "name" : "constant.character.ecf"}
       },
@@ -145,41 +169,84 @@
         },
         {
           "include": "#comment"
+        },
+        {
+          "include": "#blockcomment"
         }
       ]
     },
     "property" : {
       "patterns": [
         {
-          "name": "property.ecf",
-          "match": "\\b(\\w+):\\s*([\\w\\./]+)",
+          "name": "property.nextref.ecf",
+          "match": "((Option)?Next(_\\d+)?):\\s*(\"?[^,#]+\"?)",
           "captures": {
             "1": { "name": "keyword.other.ecf", "comment": "key" },
-            "2": { "name": "string.unquoted.ecf", "comment": "value" }
+            "4": { "name": "markup.bold.ecf", "comment": "value" }
+          }
+        },
+        {
+          "name": "property.ref.ecf",
+          "match": "([rR]ef):\\s*(\"?[^,#]+\"?)",
+          "captures": {
+            "1": { "name": "keyword.other.ecf", "comment": "key" },
+            "2": { "name": "markup.bold.ecf", "comment": "value" }
+          }
+        },
+        {
+          "name": "property.description.quoted.ecf",
+          "match": "([dD]escription|[iI]nfo):\\s*(\"[^#]+\")",
+          "captures": {
+            "1": { "name": "keyword.other.ecf", "comment": "key" },
+            "2": { "name": "string.quoted.triple.ecf", "comment": "value" }
+          }
+        },
+        {
+          "name": "property.description.ecf",
+          "match": "([dD]escription|[iI]nfo):\\s*([^,#]+)",
+          "captures": {
+            "1": { "name": "keyword.other.ecf", "comment": "key" },
+            "2": { "name": "string.unquoted.triple.ecf", "comment": "value" }
+          }
+        },
+        {
+          "name": "property.model.ecf",
+          "match": "\\b([\\w\\.\\-]+):\\s*(@[\\w\\(\\)/]+)(?![^/]*\\*/)",
+          "captures": {
+            "1": { "name": "keyword.other.ecf", "comment": "key" },
+            "2": { "name": "string.other.ecf", "comment": "value" }
           }
         },
         {
           "name": "property.quoted.ecf",
-          "match": "\\b(\\w+):\\s*(\"[\\w,]+\")",
+          "match": "\\b([\\w\\.\\-]+):\\s*(\"[\\w,]*\")",
           "captures": {
             "1": { "name": "keyword.other.ecf", "comment": "key" },
             "2": { "name": "string.quoted.ecf", "comment": "value" }
           }
         },
         {
-          "name": "property.model.ecf",
-          "match": "\\b(\\w+):\\s*([\\w@/]+)",
+          "name": "property.function.ecf",
+          "match": "\\b([\\w\\.\\-]+):\\s*(\"[^\"]+\")",
           "captures": {
             "1": { "name": "keyword.other.ecf", "comment": "key" },
             "2": { "name": "string.other.ecf", "comment": "value" }
           }
         },
         {
-          "name": "property.function.ecf",
-          "match": "\\b(\\w+):\\s*(\".+\")",
+          "name": "property.path.ecf",
+          "match": "\\b([\\w\\.\\-]+):\\s*(?=.*/)([\\w/\\.\\(\\)\\-]+)(?!/\\*)",
           "captures": {
             "1": { "name": "keyword.other.ecf", "comment": "key" },
-            "2": { "name": "string.other.ecf", "comment": "value" }
+            "2": { "name": "string.unquoted.ecf", "comment": "value" }
+          }
+        },
+        {
+          "name": "property.other.ecf",
+          "match": "\\b([\\w\\.\\-]+):\\s*([\\w\\.\\-\\(\\)\\;\\ \\|]+)",
+          "captures": {
+            "1": { "name": "keyword.other.ecf", "comment": "key" },
+            "2": { "name": "string.unquoted.ecf", "comment": "value" }
           }
         }
       ]

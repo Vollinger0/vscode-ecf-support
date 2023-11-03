@@ -5,6 +5,10 @@
  some block comment 
 */
 
+//  ************************************************************************** 
+//  ****************     Zirax BaseAttack Scenario      ********************** 
+//  ************************************************************************** 
+
 Version: 1
 
 { Item id: 123
@@ -17,19 +21,55 @@ Version: 1
   */
 }
 
-{ Item Id: 232
-  field1: value1
-  field2: value2
+{ Item Id: 232 /* one-line block comment */
+  field1: value1 /* one-line block comment */
+  field2: value2 # one line comment
+  /* one-line block comment */
 }
 
-{ Item Id: 233, Name: blockname234
-  field1: value1   # line commant after prop
+{ Item Id: 232, Name: blockname232 /* one-line block comment */
+  field1: value1   # line comment after prop
   field2: value2, ext2: extval2  # line comment after ext. prop
+  field2: value2, ext2: extval2, ext3: extval3  # line comment after another ext. prop
 }
 
-{ +Item Id: 234, Name: blockname234
+{ FooBar Name: [c]blockname233 - qweqwe [/c] # line comment after block definition
+}
+
+{ +Block Id: 1624, Name: ModularWingTConnectorM, Ref: ModularWingTaperedL
+}
+
+{ +Block Id: 1324, Name: ModularWingTConnectorM, what: isthisshit
+}
+
+{ Reputation Name: "Action.Reputation"
+}
+
+{ +Item Id: 234, Name: allSpecialProperties
   field1: value1
   field2: value2
+  field-3: @value3
+  field5: -123
+  DropMeshfile: Entities/Misc/BagSmallPrefab
+  field7: -143.232(asdasd)
+  field8: "", asdsd: 123123
+  field9: "@sdfafd/(wqeweqewq),,,"
+  field10: Some unquoted values just have empty spaces for no reason
+  Info: Modular Wings that provide lift.
+  Info: Modular Wings that provide lift., display: true
+  Description: [c][A9A9A9]A advanced pilots. \nWritten by Captain Pang.[-][/c]
+  Description: "[c][A9A9A9]A collection of flying lessons "
+  Description: "G-type stars, including the Sun, "  
+  Input: eden_dialogue_wOWiWau, param1: int;eden_dialogue_0ma0Iei;eden_dialogue_8S44aiS
+  BlastDamageMultiplier_1: 0.3, param1: hull|hullarmored|hullcombat
+	AlertLevel3: 100, param1: 15        /*  - alert drop wait - */
+	AlertLevel3: 100, param1: 15        /*  - alert drop wait - when alert level is higher as the min value for the current
+	level (80-100) (example - alert 85) and the alert drops to the min value(80), it will not drop to lower 
+	alert level for "alert drop wait" seconds*/
+  FearPropagationDamageMultiplier: 1.0 /* fear from damage propagation to group members */
+  SfxOpen: UseActions/ZIPPERShort3(mono)
+  SfxAlert: Enemies/Drone/MAGICSPELLPassingTunnelSci-FiFastRapidEcho  
+  ModelColor2: "1,0.6,0.1" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
 }
 
 { +Item Id: 345, Name: blockname345, what: "the fuck is that"
@@ -55,4 +95,33 @@ Version: 1
 { +Dialogue Name: Eden_PolarisRig_Start
   OptionIf_1: "IsPdaChapterActive('eden_pda_CCsYWuG')"
   OptionExecute_1: "Eden_PolarisMission1Progress = 1"
+  OptionNext_1: Eden_PolarisRig_Start
+  OptionNext_2: Eden_PolarisRig_Start, param: End
+}
+
+{ Token Id: 6301, Name: [c][8FFF8F]Syndicate Security Access Card[/c]
+  CustomIcon: Eden_SyndicateCard
+  Description: This key card allows access to sensitive areas of Syndicate facilities.
+}
+
+{ Token Id: 6305, Name: "[c][A9A9A9]Advanced Dogfighting Techniques[-][/c]"
+  CustomIcon: Tablet
+  Description: [c][A9A9A9]A collection of flying lessons for advanced pilots and signed by the author. \nWritten by Captain Pang.[-][/c]
+  MarketPrice: 25, display: true
+}
+
+{ Block Name: Foo
+  Key: value
+#  {	Child GroupDirectionSensor
+#	TickIfLead: true
+#	TimeBetweeenTicks: 0.2
+#	ScanElevation:false
+#	ScanWater:false
+#  } 
+
+  { Child VariableOverride
+    SpeedCalm: 0.3
+    SpeedAlerted: 0.8
+	SpeedAttack: 1.5
+  }
 }

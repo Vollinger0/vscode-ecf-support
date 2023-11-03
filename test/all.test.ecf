@@ -13,37 +13,37 @@
 #        ^^ source.ecf entity.block entity.name.tag.ecf
 #            ^^^ source.ecf entity.block constant.numeric.ecf
 #                 ^^^^ source.ecf entity.block keyword.blockname.ecf
-#                       ^^^^^^ source.ecf entity.block constant.character.ecf
+#                       ^^^^^^ source.ecf entity.block markup.bold.ecf
 >}
 #^ source.ecf
 
 
 > Key1: Value1
-# ^^^^ source.ecf property.ecf keyword.other.ecf
-#       ^^^^^^ source.ecf property.ecf string.unquoted.ecf
+# ^^^^ source.ecf property.other.ecf keyword.other.ecf
+#       ^^^^^^ source.ecf property.other.ecf string.unquoted.ecf
 
 
-> field1: value1   # line commant after prop
-# ^^^^^^ source.ecf property.ecf keyword.other.ecf
-#         ^^^^^^ source.ecf property.ecf string.unquoted.ecf
-#                  ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf comment.line.number-sign.ecf
+> Key2: value2   # line commant after prop
+# ^^^^ source.ecf property.other.ecf keyword.other.ecf
+#       ^^^^^^ source.ecf property.other.ecf string.unquoted.ecf
+#                ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf comment.line.number-sign.ecf
 
 
 > field2: value2, ext2: extval2  # line comment after ext. prop
-# ^^^^^^ source.ecf property.ecf keyword.other.ecf
-#         ^^^^^^ source.ecf property.ecf string.unquoted.ecf
-#                 ^^^^ source.ecf property.ecf keyword.other.ecf
-#                       ^^^^^^^ source.ecf property.ecf string.unquoted.ecf
+# ^^^^^^ source.ecf property.other.ecf keyword.other.ecf
+#         ^^^^^^ source.ecf property.other.ecf string.unquoted.ecf
+#                 ^^^^ source.ecf property.other.ecf keyword.other.ecf
+#                       ^^^^^^^ source.ecf property.other.ecf string.unquoted.ecf
 #                                ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf comment.line.number-sign.ecf
 
 
 > field2: value2, ext2: extval2, ext3: extval3  # line comment after ext. prop
-# ^^^^^^ source.ecf property.ecf keyword.other.ecf
-#         ^^^^^^ source.ecf property.ecf string.unquoted.ecf
-#                 ^^^^ source.ecf property.ecf keyword.other.ecf
-#                       ^^^^^^^ source.ecf property.ecf string.unquoted.ecf
-#                                ^^^^ source.ecf property.ecf keyword.other.ecf
-#                                      ^^^^^^^ source.ecf property.ecf string.unquoted.ecf
+# ^^^^^^ source.ecf property.other.ecf keyword.other.ecf
+#         ^^^^^^ source.ecf property.other.ecf string.unquoted.ecf
+#                 ^^^^ source.ecf property.other.ecf keyword.other.ecf
+#                       ^^^^^^^ source.ecf property.other.ecf string.unquoted.ecf
+#                                ^^^^ source.ecf property.other.ecf keyword.other.ecf
+#                                      ^^^^^^^ source.ecf property.other.ecf string.unquoted.ecf
 #                                               ^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf comment.line.number-sign.ecf
 
 
@@ -52,9 +52,9 @@
 #        ^^ source.ecf entity.block entity.name.tag.ecf
 #            ^^^ source.ecf entity.block constant.numeric.ecf
 #                 ^^^^ source.ecf entity.block keyword.blockname.ecf
-#                       ^^^^^^ source.ecf entity.block constant.character.ecf
-#                               ^^^^ source.ecf entity.block property.ecf keyword.other.ecf
-#                                     ^^^^^^ source.ecf entity.block property.ecf string.unquoted.ecf
+#                       ^^^^^^ source.ecf entity.block entity.name.tag.ecf markup.bold.ecf
+#                               ^^^^ source.ecf entity.block property.other.ecf keyword.other.ecf
+#                                     ^^^^^^ source.ecf entity.block property.other.ecf string.unquoted.ecf
 >}
 #^ source.ecf
 
@@ -84,7 +84,7 @@
 >{ +Dialogue Name: Eden_PolarisRig_Start
 #   ^^^^^^^^ source.ecf entity.block entity.name.type.ecf
 #            ^^^^ source.ecf entity.block keyword.blockname.ecf
-#                  ^^^^^^^^^^^^^^^^^^^^^ source.ecf entity.block constant.character.ecf
+#                  ^^^^^^^^^^^^^^^^^^^^^ source.ecf entity.block entity.name.tag.ecf markup.bold.ecf
 
 > OptionIf_1: "IsPdaChapterActive('eden_pda_CCsYWuG')"
 # ^^^^^^^^^^ source.ecf entity.block property.function.ecf keyword.other.ecf
@@ -93,5 +93,16 @@
 > OptionExecute_1: "Eden_PolarisMission1Progress = 1"
 # ^^^^^^^^^^^^^^^ source.ecf entity.block property.function.ecf keyword.other.ecf
 #                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf entity.block property.function.ecf string.other.ecf
-
 }
+
+>DropMeshfile: Entities/Misc/BagSmallPrefab
+#^^^^^^^^^^^^ source.ecf property.path.ecf
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf property.path.ecf
+
+
+>DropMeshfile: Entities/Misc/BagSmallPrefab /* qweqwe */
+#^^^^^^^^^^^^ source.ecf property.path.ecf
+#              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.ecf property.path.ecf
+#                                           ^^ source.ecf comment.block.ecf punctuation.definition.comment.begin.ecf
+#                                             ^^^^^^^^ source.ecf comment.block.ecf
+#                                                     ^^ source.ecf comment.block.ecf punctuation.definition.comment.end.ecf
