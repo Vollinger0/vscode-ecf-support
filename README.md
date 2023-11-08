@@ -56,4 +56,8 @@ None yet.
 ### 0.0.1
 Initial release with the most basic featureset ever. But still better than none, right?
 
+
+### LICENSE
+[GPLv3](LICENSE)
+
 #### by vollinger 2023
