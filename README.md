@@ -31,6 +31,7 @@ None yet.
 
 ## TODOs
 
+- [ ] configure vsce, make sure the packaged extension contains only the necessary files
 - [ ] support to navigate known entities, especially dialogue states in the dialogues.ecf
 - [ ] format support for dialogue function blocks
 - [ ] tooltip for the dialogue localization or similar
